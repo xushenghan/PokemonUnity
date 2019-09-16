@@ -51,12 +51,12 @@ public class EvolutionHandler : MonoBehaviour
         dialog = transform.GetComponent<DialogBoxHandlerNew>();
         particles = transform.GetComponent<GUIParticleHandler>();
 
-        pokemonSprite = transform.FindChild("PokemonSprite").GetComponent<Image>();
-        evolutionSprite = transform.FindChild("EvolutionSprite").GetComponent<Image>();
+        pokemonSprite = transform.Find("PokemonSprite").GetComponent<Image>();
+        evolutionSprite = transform.Find("EvolutionSprite").GetComponent<Image>();
 
-        topBorder = transform.FindChild("TopBorder").GetComponent<Image>();
-        bottomBorder = transform.FindChild("BottomBorder").GetComponent<Image>();
-        glow = transform.FindChild("Glow").GetComponent<Image>();
+        topBorder = transform.Find("TopBorder").GetComponent<Image>();
+        bottomBorder = transform.Find("BottomBorder").GetComponent<Image>();
+        glow = transform.Find("Glow").GetComponent<Image>();
     }
 
     void Start()
@@ -572,9 +572,9 @@ public class EvolutionHandler : MonoBehaviour
             if (!stopAnimations)
             {
                 Image particle = particles.createParticle(smokeParticle, ScaleToScreen(positionX, positionYmodified),
-                    sizeModified, 0, 0.6f,
-                    ScaleToScreen(positionX + Random.Range(0.01f, 0.04f), positionYmodified - 0.02f), 0,
-                    sizeModified * 0.33f);
+                    ScaleToScreen(positionX + Random.Range(0.01f, 0.04f), positionYmodified - 0.02f),
+                    sizeModified, 0, 0.6f, 0, sizeModified * 0.33f);
+
                 if (particle != null)
                 {
                     particle.color = new Color((float) i / 7f * 0.7f, (float) i / 7f * 0.7f, (float) i / 7f * 0.7f,
@@ -652,7 +652,7 @@ public class EvolutionHandler : MonoBehaviour
 
                         //Set SceneSummary to be active so that it appears
                         Scene.main.Summary.gameObject.SetActive(true);
-                        StartCoroutine(Scene.main.Summary.control(selectedPokemon, move));
+                        StartCoroutine(Scene.main.Summary.control(new Pokemon[] { selectedPokemon }, learning:learning, newMoveString:move));
                         //Start an empty loop that will only stop when SceneSummary is no longer active (is closed)
                         while (Scene.main.Summary.gameObject.activeSelf)
                         {

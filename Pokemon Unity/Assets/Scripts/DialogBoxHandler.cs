@@ -47,26 +47,26 @@ public class DialogBoxHandler : MonoBehaviour
     void Awake()
     {
         //link the DialogBox variable to the Object
-        DialogBox = gameObject.transform.FindChild("DialogBox").gameObject;
+        DialogBox = gameObject.transform.Find("DialogBox").gameObject;
         //link the ChoiceBoxTexture variable to the Object's texture
         DialogBoxTexture = DialogBox.GetComponent<GUITexture>();
         //link the DialogBoxText variable to the Text Component
-        DialogBoxText = DialogBox.transform.FindChild("BoxText").GetComponent<GUIText>();
+        DialogBoxText = DialogBox.transform.Find("BoxText").GetComponent<GUIText>();
         //link the DialogBoxTextShadow variable to the Text Component
-        DialogBoxTextShadow = DialogBox.transform.FindChild("BoxTextShadow").GetComponent<GUIText>();
+        DialogBoxTextShadow = DialogBox.transform.Find("BoxTextShadow").GetComponent<GUIText>();
         //link the DialogBoxBorder variable to the Texture Component
-        DialogBoxBorder = DialogBox.transform.FindChild("BoxBorder").GetComponent<GUITexture>();
+        DialogBoxBorder = DialogBox.transform.Find("BoxBorder").GetComponent<GUITexture>();
 
         //link the ChoiceBox variable to the Object
-        ChoiceBox = gameObject.transform.FindChild("ChoiceBox").gameObject;
+        ChoiceBox = gameObject.transform.Find("ChoiceBox").gameObject;
         //link the ChoiceBoxTexture variable to the Object's texture
         ChoiceBoxTexture = ChoiceBox.GetComponent<GUITexture>();
         //link the ChoiceBoxText variable to the Text Component
-        ChoiceBoxText = ChoiceBox.transform.FindChild("BoxText").GetComponent<GUIText>();
+        ChoiceBoxText = ChoiceBox.transform.Find("BoxText").GetComponent<GUIText>();
         //link the ChoiceBoxTextShadow variable to the TextShadow Component
-        ChoiceBoxTextShadow = ChoiceBox.transform.FindChild("BoxTextShadow").GetComponent<GUIText>();
+        ChoiceBoxTextShadow = ChoiceBox.transform.Find("BoxTextShadow").GetComponent<GUIText>();
         //link the ChoiceBoxSelect variable to the Texture Component
-        ChoiceBoxSelect = ChoiceBox.transform.FindChild("BoxSelect").GetComponent<GUITexture>();
+        ChoiceBoxSelect = ChoiceBox.transform.Find("BoxSelect").GetComponent<GUITexture>();
 
         DialogAudio = this.gameObject.GetComponent<AudioSource>();
 
@@ -78,23 +78,16 @@ public class DialogBoxHandler : MonoBehaviour
 
     void Start()
     {
-        if (hideDialogOnStart)
-        {
-            DialogBox.SetActive(false);
-        }
-        if (hideChoiceOnStart)
-        {
-            ChoiceBox.SetActive(false);
-        }
+        DialogBox.SetActive(!hideDialogOnStart);
+        ChoiceBox.SetActive(!hideChoiceOnStart);
     }
 
-    public void drawDialogBox()
-    {
-        drawDialogBox(defaultDialogLines);
-    }
 
-    public void drawDialogBox(int lines)
+    public void drawDialogBox(int lines = -1)
     {
+        if (lines < 0)
+            lines = defaultDialogLines;
+
         DialogBox.transform.position = new Vector3(0, 0, DialogBox.transform.position.z);
         DialogBox.SetActive(true);
         DialogBoxBorder.texture = Resources.Load<Texture>("Frame/dialog" + PlayerPrefs.GetInt("frameStyle"));
@@ -144,13 +137,7 @@ public class DialogBoxHandler : MonoBehaviour
         yield return null;
     }
 
-    public void drawChoiceBox()
-    {
-        //No parametres means simply Yes/No
-        drawChoiceBox(0);
-    }
-
-    public void drawChoiceBox(int customYOffset)
+    public void drawChoiceBox(int customYOffset = 0)
     {
         //No other parametres means simply Yes/No
         ChoiceBox.SetActive(true);
@@ -179,33 +166,11 @@ public class DialogBoxHandler : MonoBehaviour
         ChoiceBoxTextShadow.text = "Yes \nNo";
     }
 
-    public void drawChoiceBox(string[] choices)
+    public void drawChoiceBox(string[] choices, int width = -1)
     {
-        ChoiceBox.SetActive(true);
-        ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        ChoiceBoxTexture.pixelInset = new Rect(342 - defaultChoiceWidth - 1, defaultChoiceY, defaultChoiceWidth,
-            30f + (14f * (choices.Length - 1)));
-        ChoiceBoxSelect.pixelInset = new Rect(342 - defaultChoiceWidth + 7,
-            ChoiceBoxTexture.pixelInset.y + 9f + (14f * (choices.Length - 1)), ChoiceBoxSelect.pixelInset.width,
-            ChoiceBoxSelect.pixelInset.height);
-        ChoiceBoxText.pixelOffset = new Vector2(342 - defaultChoiceWidth + 21, ChoiceBoxTexture.pixelInset.y + 13f);
-        ChoiceBoxTextShadow.pixelOffset = new Vector2(342 - defaultChoiceWidth + 22, ChoiceBoxTexture.pixelInset.y + 12f);
-        ChoiceBoxText.text = "";
-        ChoiceBoxTextShadow.text = "";
-        for (int i = 0; i < choices.Length; i++)
-        {
-            ChoiceBoxText.text += choices[i];
-            ChoiceBoxTextShadow.text = ChoiceBoxText.text;
-            if (i != choices.Length - 1)
-            {
-                ChoiceBoxText.text += "\n";
-                ChoiceBoxTextShadow.text = ChoiceBoxText.text;
-            }
-        }
-    }
+        if (width < 0)
+            width = defaultChoiceWidth;
 
-    public void drawChoiceBoxWidth(string[] choices, int width)
-    {
         ChoiceBox.SetActive(true);
         ChoiceBoxTexture.texture = Resources.Load<Texture>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
         ChoiceBoxTexture.pixelInset = new Rect(342 - width - 1, defaultChoiceY, width,
@@ -397,10 +362,10 @@ public class DialogBoxHandler : MonoBehaviour
     }
 
 
-    public IEnumerator choiceNavigate()
+    public IEnumerator choiceNavigate(int defaultChosenIndex = 1)
     {
         //No parametres means simply Yes/No
-        chosenIndex = 1; //0 is the vertically lowest choice
+        chosenIndex = defaultChosenIndex; //0 is the vertically lowest choice
         bool selected = false;
         while (!selected)
         {
@@ -452,61 +417,7 @@ public class DialogBoxHandler : MonoBehaviour
         }
     }
 
-    public IEnumerator choiceNavigateNo()
-    {
-        //For when No needs to be default;
-        chosenIndex = 0;
-        bool selected = false;
-        while (!selected)
-        {
-            if (Input.GetButtonDown("Select"))
-            {
-                selected = true;
-            }
-            else if (Input.GetButtonDown("Back"))
-            {
-                while (chosenIndex > 0)
-                {
-                    chosenIndex -= 1;
-                    ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                        ChoiceBoxSelect.pixelInset.y - 14f, ChoiceBoxSelect.pixelInset.width,
-                        ChoiceBoxSelect.pixelInset.height);
-                }
-                SfxHandler.Play(selectClip);
-                yield return new WaitForSeconds(0.2f);
-                selected = true;
-            }
-            else
-            {
-                if (chosenIndex < 1)
-                {
-                    if (Input.GetAxisRaw("Vertical") > 0)
-                    {
-                        chosenIndex += 1;
-                        ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y + 14f, ChoiceBoxSelect.pixelInset.width,
-                            ChoiceBoxSelect.pixelInset.height);
-                        SfxHandler.Play(selectClip);
-                        yield return new WaitForSeconds(0.2f);
-                    }
-                }
-                if (chosenIndex > 0)
-                {
-                    if (Input.GetAxisRaw("Vertical") < 0)
-                    {
-                        chosenIndex -= 1;
-                        ChoiceBoxSelect.pixelInset = new Rect(ChoiceBoxSelect.pixelInset.x,
-                            ChoiceBoxSelect.pixelInset.y - 14f, ChoiceBoxSelect.pixelInset.width,
-                            ChoiceBoxSelect.pixelInset.height);
-                        SfxHandler.Play(selectClip);
-                        yield return new WaitForSeconds(0.2f);
-                    }
-                }
-            }
-            yield return null;
-        }
-    }
-
+   
     public IEnumerator choiceNavigate(string[] choices)
     {
         chosenIndex = choices.Length - 1; //0 is the vertically lowest choice

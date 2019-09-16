@@ -26,7 +26,7 @@ public class SceneTransition : MonoBehaviour
             gameScene = this;
         }
 
-        screenFader = transform.FindChild("ScreenFader").GetComponent<GUITexture>();
+        screenFader = transform.Find("ScreenFader").GetComponent<GUITexture>();
         if (screenFader != null)
         {
             RotatableGUI = false;
@@ -41,7 +41,7 @@ public class SceneTransition : MonoBehaviour
         }
         else
         {
-            screenFaderOnGUI = transform.FindChild("ScreenFader").GetComponent<RotatableGUIItem>();
+            screenFaderOnGUI = transform.Find("ScreenFader").GetComponent<RotatableGUIItem>();
             screenFaderOnGUI.size = new Vector2(342, 192);
         }
     }
@@ -157,13 +157,11 @@ public class SceneTransition : MonoBehaviour
         fading = false;
     }
 
-    public float FadeIn()
+    public float FadeIn(float speed = -1)
     {
-        return FadeIn(fadeSpeed);
-    }
+        if (speed < 0)
+            speed = fadeSpeed;
 
-    public float FadeIn(float speed)
-    {
         if (!RotatableGUI)
         {
             screenFader.enabled = true;
@@ -182,28 +180,11 @@ public class SceneTransition : MonoBehaviour
         return speed;
     }
 
-    public float FadeOut()
+    public float FadeOut(float speed = -1)
     {
-        if (!RotatableGUI)
-        {
-            screenFader.enabled = true;
-            screenFader.texture = GlobalVariables.global.fadeTex;
-        }
-        else
-        {
-            screenFaderOnGUI.enabled = true;
-            screenFaderOnGUI.texture = (Texture2D) GlobalVariables.global.fadeTex;
-        }
-        increment = 0;
-        fadingOut = true;
-        fading = true;
-        StartCoroutine("fade", fadeSpeed);
-        GlobalVariables.global.fadeIn = true;
-        return fadeSpeed;
-    }
+        if (speed < 0)
+            speed = fadeSpeed;
 
-    public float FadeOut(float speed)
-    {
         if (!RotatableGUI)
         {
             screenFader.enabled = true;

@@ -133,81 +133,81 @@ public class BagHandler : MonoBehaviour
         Dialog = transform.GetComponent<DialogBoxHandler>();
         BagAudio = transform.GetComponent<AudioSource>();
 
-        party = transform.FindChild("Party");
+        party = transform.Find("Party");
         for (int i = 0; i < 6; i++)
         {
-            partySlot[i] = party.FindChild("Slot" + i).GetComponent<GUITexture>();
-            partyIcon[i] = partySlot[i].transform.FindChild("Icon").GetComponent<GUITexture>();
-            partyName[i] = partySlot[i].transform.FindChild("Name").GetComponent<GUIText>();
-            partyNameShadow[i] = partyName[i].transform.FindChild("NameShadow").GetComponent<GUIText>();
-            partyGender[i] = partySlot[i].transform.FindChild("Gender").GetComponent<GUIText>();
-            partyGenderShadow[i] = partyGender[i].transform.FindChild("GenderShadow").GetComponent<GUIText>();
-            partyStandardDisplay[i] = partySlot[i].transform.FindChild("StandardDisplay").gameObject;
-            partyHPBarBack[i] = partyStandardDisplay[i].transform.FindChild("HPBarBack").GetComponent<GUITexture>();
-            partyHPBar[i] = partyStandardDisplay[i].transform.FindChild("HPBar").GetComponent<GUITexture>();
-            partyLv[i] = partyStandardDisplay[i].transform.FindChild("Lv").GetComponent<GUITexture>();
-            partyLevel[i] = partyStandardDisplay[i].transform.FindChild("Level").GetComponent<GUIText>();
-            partyLevelShadow[i] = partyLevel[i].transform.FindChild("LevelShadow").GetComponent<GUIText>();
-            partyTextDisplay[i] = partySlot[i].transform.FindChild("TextDisplay").GetComponent<GUIText>();
+            partySlot[i] = party.Find("Slot" + i).GetComponent<GUITexture>();
+            partyIcon[i] = partySlot[i].transform.Find("Icon").GetComponent<GUITexture>();
+            partyName[i] = partySlot[i].transform.Find("Name").GetComponent<GUIText>();
+            partyNameShadow[i] = partyName[i].transform.Find("NameShadow").GetComponent<GUIText>();
+            partyGender[i] = partySlot[i].transform.Find("Gender").GetComponent<GUIText>();
+            partyGenderShadow[i] = partyGender[i].transform.Find("GenderShadow").GetComponent<GUIText>();
+            partyStandardDisplay[i] = partySlot[i].transform.Find("StandardDisplay").gameObject;
+            partyHPBarBack[i] = partyStandardDisplay[i].transform.Find("HPBarBack").GetComponent<GUITexture>();
+            partyHPBar[i] = partyStandardDisplay[i].transform.Find("HPBar").GetComponent<GUITexture>();
+            partyLv[i] = partyStandardDisplay[i].transform.Find("Lv").GetComponent<GUITexture>();
+            partyLevel[i] = partyStandardDisplay[i].transform.Find("Level").GetComponent<GUIText>();
+            partyLevelShadow[i] = partyLevel[i].transform.Find("LevelShadow").GetComponent<GUIText>();
+            partyTextDisplay[i] = partySlot[i].transform.Find("TextDisplay").GetComponent<GUIText>();
             partyTextDisplayShadow[i] =
-                partyTextDisplay[i].transform.FindChild("TextDisplayShadow").GetComponent<GUIText>();
-            partyStatus[i] = partySlot[i].transform.FindChild("Status").GetComponent<GUITexture>();
-            partyItem[i] = partySlot[i].transform.FindChild("Item").GetComponent<GUITexture>();
+                partyTextDisplay[i].transform.Find("TextDisplayShadow").GetComponent<GUIText>();
+            partyStatus[i] = partySlot[i].transform.Find("Status").GetComponent<GUITexture>();
+            partyItem[i] = partySlot[i].transform.Find("Item").GetComponent<GUITexture>();
         }
-        scrollBar = transform.FindChild("ScrollBar").GetComponent<GUITexture>();
+        scrollBar = transform.Find("ScrollBar").GetComponent<GUITexture>();
 
-        itemList = transform.FindChild("ItemList");
+        itemList = transform.Find("ItemList");
         for (int i = 0; i < 8; i++)
         {
-            itemSlot[i] = itemList.FindChild("Item" + i).GetComponent<GUITexture>();
-            itemName[i] = itemSlot[i].transform.FindChild("Name").GetComponent<GUIText>();
-            itemNameShadow[i] = itemSlot[i].transform.FindChild("NameShadow").GetComponent<GUIText>();
-            itemIcon[i] = itemSlot[i].transform.FindChild("Icon").GetComponent<GUITexture>();
-            itemX[i] = itemSlot[i].transform.FindChild("x").GetComponent<GUIText>();
-            itemXShadow[i] = itemX[i].transform.FindChild("xShadow").GetComponent<GUIText>();
-            itemQuantity[i] = itemSlot[i].transform.FindChild("Quantity").GetComponent<GUIText>();
-            itemQuantityShadow[i] = itemSlot[i].transform.FindChild("QuantityShadow").GetComponent<GUIText>();
+            itemSlot[i] = itemList.Find("Item" + i).GetComponent<GUITexture>();
+            itemName[i] = itemSlot[i].transform.Find("Name").GetComponent<GUIText>();
+            itemNameShadow[i] = itemSlot[i].transform.Find("NameShadow").GetComponent<GUIText>();
+            itemIcon[i] = itemSlot[i].transform.Find("Icon").GetComponent<GUITexture>();
+            itemX[i] = itemSlot[i].transform.Find("x").GetComponent<GUIText>();
+            itemXShadow[i] = itemX[i].transform.Find("xShadow").GetComponent<GUIText>();
+            itemQuantity[i] = itemSlot[i].transform.Find("Quantity").GetComponent<GUIText>();
+            itemQuantityShadow[i] = itemSlot[i].transform.Find("QuantityShadow").GetComponent<GUIText>();
         }
 
-        itemDescription = transform.FindChild("ItemDescription").GetComponent<GUIText>();
-        itemDescriptionShadow = itemDescription.transform.FindChild("ItemDescriptionShadow").GetComponent<GUIText>();
+        itemDescription = transform.Find("ItemDescription").GetComponent<GUIText>();
+        itemDescriptionShadow = itemDescription.transform.Find("ItemDescriptionShadow").GetComponent<GUIText>();
 
         for (int i = 1; i < 6; i++)
         {
-            screens[i] = transform.FindChild("bag" + i).gameObject;
-            shopScreens[i] = transform.FindChild("shop" + i).gameObject;
+            screens[i] = transform.Find("bag" + i).gameObject;
+            shopScreens[i] = transform.Find("shop" + i).gameObject;
         }
 
-        numbersBox = transform.FindChild("NumbersBox").gameObject;
+        numbersBox = transform.Find("NumbersBox").gameObject;
         numbersBoxBorder = numbersBox.transform.GetComponent<GUITexture>();
-        numbersBoxText = numbersBox.transform.FindChild("NumberText").GetComponent<GUIText>();
-        numbersBoxTextShadow = numbersBox.transform.FindChild("NumberTextShadow").GetComponent<GUIText>();
-        numbersBoxSelector = numbersBox.transform.FindChild("Selector").GetComponent<GUIText>();
-        numbersBoxSelectorShadow = numbersBox.transform.FindChild("SelectorShadow").GetComponent<GUIText>();
+        numbersBoxText = numbersBox.transform.Find("NumberText").GetComponent<GUIText>();
+        numbersBoxTextShadow = numbersBox.transform.Find("NumberTextShadow").GetComponent<GUIText>();
+        numbersBoxSelector = numbersBox.transform.Find("Selector").GetComponent<GUIText>();
+        numbersBoxSelectorShadow = numbersBox.transform.Find("SelectorShadow").GetComponent<GUIText>();
 
-        shopName = transform.FindChild("ShopName").GetComponent<GUIText>();
-        shopNameShadow = shopName.transform.FindChild("ShopNameShadow").GetComponent<GUIText>();
+        shopName = transform.Find("ShopName").GetComponent<GUIText>();
+        shopNameShadow = shopName.transform.Find("ShopNameShadow").GetComponent<GUIText>();
 
-        moneyBox = transform.FindChild("MoneyBox").gameObject;
-        moneyBoxBorder = moneyBox.transform.FindChild("BoxBorder").GetComponent<GUITexture>();
-        moneyValueText = moneyBox.transform.FindChild("Money").GetComponent<GUIText>();
-        moneyValueTextShadow = moneyBox.transform.FindChild("MoneyShadow").GetComponent<GUIText>();
+        moneyBox = transform.Find("MoneyBox").gameObject;
+        moneyBoxBorder = moneyBox.transform.Find("BoxBorder").GetComponent<GUITexture>();
+        moneyValueText = moneyBox.transform.Find("Money").GetComponent<GUIText>();
+        moneyValueTextShadow = moneyBox.transform.Find("MoneyShadow").GetComponent<GUIText>();
 
-        dataBox = transform.FindChild("DataBox").gameObject;
-        dataBoxBorder = dataBox.transform.FindChild("BoxBorder").GetComponent<GUITexture>();
-        dataText = dataBox.transform.FindChild("DataText").GetComponent<GUIText>();
-        dataTextShadow = dataBox.transform.FindChild("DataTextShadow").GetComponent<GUIText>();
-        dataValueText = dataBox.transform.FindChild("Data").GetComponent<GUIText>();
-        dataValueTextShadow = dataBox.transform.FindChild("DataShadow").GetComponent<GUIText>();
+        dataBox = transform.Find("DataBox").gameObject;
+        dataBoxBorder = dataBox.transform.Find("BoxBorder").GetComponent<GUITexture>();
+        dataText = dataBox.transform.Find("DataText").GetComponent<GUIText>();
+        dataTextShadow = dataBox.transform.Find("DataTextShadow").GetComponent<GUIText>();
+        dataValueText = dataBox.transform.Find("Data").GetComponent<GUIText>();
+        dataValueTextShadow = dataBox.transform.Find("DataShadow").GetComponent<GUIText>();
 
-        tmType = screens[4].transform.FindChild("TMType").GetComponent<GUITexture>();
-        tmCategory = screens[4].transform.FindChild("TMCategory").GetComponent<GUITexture>();
-        tmPower = screens[4].transform.FindChild("TMPower").GetComponent<GUIText>();
-        tmPowerShadow = tmPower.transform.FindChild("TMPowerShadow").GetComponent<GUIText>();
-        tmAccuracy = screens[4].transform.FindChild("TMAccuracy").GetComponent<GUIText>();
-        tmAccuracyShadow = tmAccuracy.transform.FindChild("TMAccuracyShadow").GetComponent<GUIText>();
-        tmDescription = screens[4].transform.FindChild("TMDescription").GetComponent<GUIText>();
-        tmDescriptionShadow = tmDescription.transform.FindChild("TMDescriptionShadow").GetComponent<GUIText>();
+        tmType = screens[4].transform.Find("TMType").GetComponent<GUITexture>();
+        tmCategory = screens[4].transform.Find("TMCategory").GetComponent<GUITexture>();
+        tmPower = screens[4].transform.Find("TMPower").GetComponent<GUIText>();
+        tmPowerShadow = tmPower.transform.Find("TMPowerShadow").GetComponent<GUIText>();
+        tmAccuracy = screens[4].transform.Find("TMAccuracy").GetComponent<GUIText>();
+        tmAccuracyShadow = tmAccuracy.transform.Find("TMAccuracyShadow").GetComponent<GUIText>();
+        tmDescription = screens[4].transform.Find("TMDescription").GetComponent<GUIText>();
+        tmDescriptionShadow = tmDescription.transform.Find("TMDescriptionShadow").GetComponent<GUIText>();
     }
 
     void Start()
@@ -1563,8 +1563,8 @@ public class BagHandler : MonoBehaviour
                         {
                             Dialog.drawDialogBox();
                             yield return
-                                Dialog.StartCoroutine("drawText",
-                                    "Take " + SaveData.currentSave.PC.boxes[0][partyPosition].getName() + "'s Item?");
+                                Dialog.StartCoroutine(Dialog.drawText(
+                                    "Take " + SaveData.currentSave.PC.boxes[0][partyPosition].getName() + "'s Item?"));
                             Dialog.drawChoiceBox();
                             yield return Dialog.StartCoroutine("choiceNavigate");
                             int chosenIndex = Dialog.chosenIndex;
@@ -1584,9 +1584,9 @@ public class BagHandler : MonoBehaviour
 
                                 Dialog.drawDialogBox();
                                 yield return
-                                    Dialog.StartCoroutine("drawText",
+                                    Dialog.StartCoroutine(Dialog.drawText(
                                         "Took the " + receivedItem + " from " +
-                                        SaveData.currentSave.PC.boxes[0][partyPosition].getName() + ".");
+                                        SaveData.currentSave.PC.boxes[0][partyPosition].getName() + "."));
                                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                                 {
                                     yield return null;
@@ -1609,7 +1609,7 @@ public class BagHandler : MonoBehaviour
                         {
                             Dialog.drawDialogBox();
                             yield return
-                                Dialog.StartCoroutine("drawText", "Do what with " + currentItemList[selected] + "?");
+                                Dialog.StartCoroutine(Dialog.drawText( "Do what with " + currentItemList[selected] + "?"));
                             string[] choices = new string[] {"Deselect", "Cancel"};
                             ItemData selectedItem = ItemDatabase.getItem(currentItemList[selected]);
                             if (selectedItem.getItemType() == ItemData.ItemType.KEY)
@@ -1649,8 +1649,8 @@ public class BagHandler : MonoBehaviour
                                     //REGISTER (key item)
                                     Dialog.drawDialogBox();
                                     yield return
-                                        Dialog.StartCoroutine("drawText",
-                                            "Register " + selectedItem.getName() + " to which slot?");
+                                        Dialog.StartCoroutine(Dialog.drawText(
+                                            "Register " + selectedItem.getName() + " to which slot?"));
                                     choices = new string[]
                                     {
                                         "Slot 1", "Slot 2", "Slot 3", "Slot 4", "Cancel"
@@ -1688,8 +1688,8 @@ public class BagHandler : MonoBehaviour
                                         if (selectedItem.getItemType() != ItemData.ItemType.TM)
                                         {
                                             yield return
-                                                Dialog.StartCoroutine("drawText",
-                                                    "Use " + selectedItem.getName() + " on which Pokémon?");
+                                                Dialog.StartCoroutine(Dialog.drawText(
+                                                    "Use " + selectedItem.getName() + " on which Pokémon?"));
                                         }
                                         else
                                         {
@@ -1703,8 +1703,8 @@ public class BagHandler : MonoBehaviour
                                             }
                                             Dialog.drawDialogBox(2);
                                             yield return
-                                                Dialog.StartCoroutine("drawText",
-                                                    "It contained " + selectedItem.getName() + ".");
+                                                Dialog.StartCoroutine(Dialog.drawText(
+                                                    "It contained " + selectedItem.getName() + "."));
                                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                                             {
                                                 yield return null;
@@ -1712,8 +1712,8 @@ public class BagHandler : MonoBehaviour
 
                                             Dialog.drawDialogBox(2);
                                             yield return
-                                                Dialog.StartCoroutine("drawText",
-                                                    "Teach " + selectedItem.getName() + " \nto a Pokémon?");
+                                                Dialog.StartCoroutine(Dialog.drawText(
+                                                    "Teach " + selectedItem.getName() + " \nto a Pokémon?"));
                                             Dialog.drawChoiceBox(14);
                                             yield return StartCoroutine(Dialog.choiceNavigate());
                                             chosenIndex = Dialog.chosenIndex;
@@ -1728,8 +1728,8 @@ public class BagHandler : MonoBehaviour
                                             {
                                                 Dialog.drawDialogBox(2);
                                                 yield return
-                                                    Dialog.StartCoroutine("drawText",
-                                                        "Who should learn \n" + selectedItem.getName() + "?");
+                                                    Dialog.StartCoroutine(Dialog.drawText(
+                                                        "Who should learn \n" + selectedItem.getName() + "?"));
                                             }
                                         }
                                         partyPosition = 0;
@@ -1788,7 +1788,7 @@ public class BagHandler : MonoBehaviour
                                     }
                                     else
                                     {
-                                        yield return Dialog.StartCoroutine("drawText", "There's no one to use it on!");
+                                        yield return Dialog.StartCoroutine(Dialog.drawText( "There's no one to use it on!"));
                                         while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                                         {
                                             yield return null;
@@ -1836,7 +1836,7 @@ public class BagHandler : MonoBehaviour
 
                         Dialog.drawDialogBox();
                         yield return
-                            Dialog.StartCoroutine("drawText", "Do what with " + currentItemList[selected] + "?");
+                            Dialog.StartCoroutine(Dialog.drawText( "Do what with " + currentItemList[selected] + "?"));
                         string[] choices = new string[] {"Give", "Deselect", "Cancel"};
                         if (!string.IsNullOrEmpty(currentPokemon.getHeldItem()))
                         {
@@ -1921,8 +1921,8 @@ public class BagHandler : MonoBehaviour
 
                             Dialog.drawDialogBox();
                             yield return
-                                Dialog.StartCoroutine("drawText",
-                                    "Gave " + selectedItem.getName() + " to " + currentPokemon.getName() + ".");
+                                Dialog.StartCoroutine(Dialog.drawText(
+                                    "Gave " + selectedItem.getName() + " to " + currentPokemon.getName() + "."));
                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                             {
                                 yield return null;
@@ -1947,8 +1947,8 @@ public class BagHandler : MonoBehaviour
 
                             Dialog.drawDialogBox();
                             yield return
-                                Dialog.StartCoroutine("drawText",
-                                    "Took the " + receivedItem + " from " + currentPokemon.getName() + ".");
+                                Dialog.StartCoroutine(Dialog.drawText(
+                                    "Took the " + receivedItem + " from " + currentPokemon.getName() + "."));
                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                             {
                                 yield return null;
@@ -1974,15 +1974,15 @@ public class BagHandler : MonoBehaviour
 
                             Dialog.drawDialogBox();
                             yield return
-                                Dialog.StartCoroutine("drawText",
-                                    "Gave " + selectedItem.getName() + " to " + currentPokemon.getName() + ",");
+                                Dialog.StartCoroutine(Dialog.drawText(
+                                    "Gave " + selectedItem.getName() + " to " + currentPokemon.getName() + ","));
                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                             {
                                 yield return null;
                             }
                             Dialog.drawDialogBox();
                             yield return
-                                Dialog.StartCoroutine("drawText", "and received " + receivedItem + " in return.");
+                                Dialog.StartCoroutine(Dialog.drawText( "and received " + receivedItem + " in return."));
                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                             {
                                 yield return null;
@@ -2116,7 +2116,7 @@ public class BagHandler : MonoBehaviour
                 }
 
                 Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine("drawTextSilent", "It restored " + amount + " points.");
+                yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "It restored " + amount + " points."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -2125,7 +2125,7 @@ public class BagHandler : MonoBehaviour
             else
             {
                 Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine("drawText", "It wouldn't have any effect.");
+                yield return Dialog.StartCoroutine(Dialog.drawText( "It wouldn't have any effect."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -2184,7 +2184,7 @@ public class BagHandler : MonoBehaviour
                     removeItem(selectedItem.getName(), 1);
 
                     Dialog.drawDialogBox();
-                    yield return Dialog.StartCoroutine("drawTextSilent", "Restored all moves.");
+                    yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "Restored all moves."));
                     while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                     {
                         yield return null;
@@ -2216,8 +2216,8 @@ public class BagHandler : MonoBehaviour
 
                     //Start the dialog, now that the choices have been set up.
                     Dialog.drawDialogBox();
-                    yield return Dialog.StartCoroutine("drawText", "Restore which move's PP?");
-                    Dialog.drawChoiceBoxWidth(choices, 110);
+                    yield return Dialog.StartCoroutine(Dialog.drawText( "Restore which move's PP?"));
+                    Dialog.drawChoiceBox(choices, 110);
                     yield return StartCoroutine(Dialog.choiceNavigate(choices));
                     int chosenIndex = Dialog.chosenIndex;
                     if (chosenIndex != 0)
@@ -2248,7 +2248,7 @@ public class BagHandler : MonoBehaviour
                         removeItem(selectedItem.getName(), 1);
 
                         Dialog.drawDialogBox();
-                        yield return Dialog.StartCoroutine("drawTextSilent", "It restored " + amount + " points.");
+                        yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "It restored " + amount + " points."));
                         while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                         {
                             yield return null;
@@ -2259,7 +2259,7 @@ public class BagHandler : MonoBehaviour
             else
             {
                 Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine("drawText", "It wouldn't have any effect.");
+                yield return Dialog.StartCoroutine(Dialog.drawText( "It wouldn't have any effect."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -2337,7 +2337,7 @@ public class BagHandler : MonoBehaviour
                     }
 
                     Dialog.drawDialogBox();
-                    yield return Dialog.StartCoroutine("drawTextSilent", "It restored " + amount + " points.");
+                    yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "It restored " + amount + " points."));
                     while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                     {
                         yield return null;
@@ -2353,23 +2353,23 @@ public class BagHandler : MonoBehaviour
                     Dialog.drawDialogBox();
                     if (statusCurer == "ASLEEP")
                     {
-                        yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + " woke up!");
+                        yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + " woke up!"));
                     }
                     else if (statusCurer == "BURNED")
                     {
-                        yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + " was healed!");
+                        yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + " was healed!"));
                     }
                     else if (statusCurer == "FROZEN")
                     {
-                        yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + " thawed out!");
+                        yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + " thawed out!"));
                     }
                     else if (statusCurer == "PARALYZED")
                     {
-                        yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + " was cured!");
+                        yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + " was cured!"));
                     }
                     else if (statusCurer == "POISONED")
                     {
-                        yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + " was cured!");
+                        yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + " was cured!"));
                     }
 
                     while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
@@ -2381,7 +2381,7 @@ public class BagHandler : MonoBehaviour
             else
             {
                 Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine("drawText", "It wouldn't have any effect.");
+                yield return Dialog.StartCoroutine(Dialog.drawText( "It wouldn't have any effect."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -2405,29 +2405,29 @@ public class BagHandler : MonoBehaviour
                 Dialog.drawDialogBox();
                 if (statBooster == "HP")
                 {
-                    yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + "'s HP rose!");
+                    yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + "'s HP rose!"));
                 }
                 else if (statBooster == "ATK")
                 {
-                    yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + "'s Attack rose!");
+                    yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + "'s Attack rose!"));
                 }
                 else if (statBooster == "DEF")
                 {
-                    yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + "'s Defense rose!");
+                    yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + "'s Defense rose!"));
                 }
                 else if (statBooster == "SPA")
                 {
                     yield return
-                        Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + "'s Special Attack rose!");
+                        Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + "'s Special Attack rose!"));
                 }
                 else if (statBooster == "SPD")
                 {
                     yield return
-                        Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + "'s Special Defense rose!");
+                        Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + "'s Special Defense rose!"));
                 }
                 else if (statBooster == "SPE")
                 {
-                    yield return Dialog.StartCoroutine("drawTextSilent", currentPokemon.getName() + "'s Speed rose!");
+                    yield return Dialog.StartCoroutine(Dialog.drawTextSilent( currentPokemon.getName() + "'s Speed rose!"));
                 }
 
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
@@ -2439,7 +2439,7 @@ public class BagHandler : MonoBehaviour
             else
             {
                 Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine("drawText", "It wouldn't have any effect.");
+                yield return Dialog.StartCoroutine(Dialog.drawText( "It wouldn't have any effect."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -2482,7 +2482,7 @@ public class BagHandler : MonoBehaviour
             else
             {
                 Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine("drawText", "It wouldn't have any effect.");
+                yield return Dialog.StartCoroutine(Dialog.drawText( "It wouldn't have any effect."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -2499,8 +2499,8 @@ public class BagHandler : MonoBehaviour
             {
                 Dialog.drawDialogBox(2);
                 yield return
-                    Dialog.StartCoroutine("drawText",
-                        currentPokemon.getName() + " already knows \n" + selectedItem.getName() + ".");
+                    Dialog.StartCoroutine(Dialog.drawText(
+                        currentPokemon.getName() + " already knows \n" + selectedItem.getName() + "."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -2519,15 +2519,15 @@ public class BagHandler : MonoBehaviour
                         yield return null;
                     }
                     Dialog.drawDialogBox(2);
-                    yield return Dialog.StartCoroutine("drawText", "It contained " + selectedItem.getName() + ".");
+                    yield return Dialog.StartCoroutine(Dialog.drawText( "It contained " + selectedItem.getName() + "."));
                     while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                     {
                         yield return null;
                     }
                     Dialog.drawDialogBox(2);
                     yield return
-                        Dialog.StartCoroutine("drawText",
-                            "Teach " + selectedItem.getName() + "\nto " + currentPokemon.getName() + "?");
+                        Dialog.StartCoroutine(Dialog.drawText(
+                            "Teach " + selectedItem.getName() + "\nto " + currentPokemon.getName() + "?"));
                     Dialog.drawChoiceBox(14);
                     yield return StartCoroutine(Dialog.choiceNavigate());
                     Dialog.undrawChoiceBox();
@@ -2545,7 +2545,7 @@ public class BagHandler : MonoBehaviour
             else
             {
                 Dialog.drawDialogBox();
-                yield return Dialog.StartCoroutine("drawText", currentPokemon.getName() + " can't learn that move.");
+                yield return Dialog.StartCoroutine(Dialog.drawText( currentPokemon.getName() + " can't learn that move."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
@@ -2574,8 +2574,8 @@ public class BagHandler : MonoBehaviour
 
                     Dialog.drawDialogBox();
                     yield return
-                        Dialog.StartCoroutine("drawTextSilent",
-                            currentPokemon.getName() + "'s level rose to " + currentPokemon.getLevel() + "!");
+                        Dialog.StartCoroutine(Dialog.drawTextSilent(
+                            currentPokemon.getName() + "'s level rose to " + currentPokemon.getLevel() + "!"));
                     while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                     {
                         yield return null;
@@ -2618,7 +2618,7 @@ public class BagHandler : MonoBehaviour
                 else
                 {
                     Dialog.drawDialogBox();
-                    yield return Dialog.StartCoroutine("drawText", "It wouldn't have any effect.");
+                    yield return Dialog.StartCoroutine(Dialog.drawText( "It wouldn't have any effect."));
                     while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                     {
                         yield return null;
@@ -2644,23 +2644,23 @@ public class BagHandler : MonoBehaviour
                 {
                     Dialog.drawDialogBox(2);
                     yield return
-                        Dialog.StartCoroutine("drawText",
-                            selectedPokemon.getName() + " wants to learn the \nmove " + move + ".");
+                        Dialog.StartCoroutine(Dialog.drawText(
+                            selectedPokemon.getName() + " wants to learn the \nmove " + move + "."));
                     while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                     {
                         yield return null;
                     }
                     Dialog.drawDialogBox(2);
                     yield return
-                        Dialog.StartCoroutine("drawText",
-                            "However, " + selectedPokemon.getName() + " already \nknows four moves.");
+                        Dialog.StartCoroutine(Dialog.drawText(
+                            "However, " + selectedPokemon.getName() + " already \nknows four moves."));
                     while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                     {
                         yield return null;
                     }
                     Dialog.drawDialogBox(2);
                     yield return
-                        Dialog.StartCoroutine("drawText", "Should a move be deleted and \nreplaced with " + move + "?");
+                        Dialog.StartCoroutine(Dialog.drawText( "Should a move be deleted and \nreplaced with " + move + "?"));
 
                     Dialog.drawChoiceBox(14);
                     yield return StartCoroutine(Dialog.choiceNavigate());
@@ -2669,7 +2669,7 @@ public class BagHandler : MonoBehaviour
                     if (chosenIndex == 1)
                     {
                         Dialog.drawDialogBox(2);
-                        yield return Dialog.StartCoroutine("drawText", "Which move should \nbe forgotten?");
+                        yield return Dialog.StartCoroutine(Dialog.drawText( "Which move should \nbe forgotten?"));
                         while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                         {
                             yield return null;
@@ -2679,7 +2679,7 @@ public class BagHandler : MonoBehaviour
 
                         //Set SceneSummary to be active so that it appears
                         Scene.main.Summary.gameObject.SetActive(true);
-                        StartCoroutine(Scene.main.Summary.control(selectedPokemon, move));
+                        StartCoroutine(Scene.main.Summary.control(new Pokemon[] { selectedPokemon }, learning:learning, newMoveString:move));
                         //Start an empty loop that will only stop when SceneSummary is no longer active (is closed)
                         while (Scene.main.Summary.gameObject.activeSelf)
                         {
@@ -2692,18 +2692,18 @@ public class BagHandler : MonoBehaviour
                         if (!string.IsNullOrEmpty(replacedMove))
                         {
                             Dialog.drawDialogBox(2);
-                            yield return Dialog.StartCoroutine("drawTextSilent", "1, ");
+                            yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "1, "));
                             yield return new WaitForSeconds(0.4f);
-                            yield return Dialog.StartCoroutine("drawTextSilent", "2, ");
+                            yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "2, "));
                             yield return new WaitForSeconds(0.4f);
-                            yield return Dialog.StartCoroutine("drawTextSilent", "and... ");
+                            yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "and... "));
                             yield return new WaitForSeconds(0.4f);
-                            yield return Dialog.StartCoroutine("drawTextSilent", "... ");
+                            yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "... "));
                             yield return new WaitForSeconds(0.4f);
-                            yield return Dialog.StartCoroutine("drawTextSilent", "... ");
+                            yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "... "));
                             yield return new WaitForSeconds(0.4f);
                             SfxHandler.Play(forgetMoveClip);
-                            yield return Dialog.StartCoroutine("drawTextSilent", "Poof!");
+                            yield return Dialog.StartCoroutine(Dialog.drawTextSilent( "Poof!"));
                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                             {
                                 yield return null;
@@ -2711,14 +2711,14 @@ public class BagHandler : MonoBehaviour
 
                             Dialog.drawDialogBox(2);
                             yield return
-                                Dialog.StartCoroutine("drawText",
-                                    selectedPokemon.getName() + " forgot how to \nuse " + replacedMove + ".");
+                                Dialog.StartCoroutine(Dialog.drawText(
+                                    selectedPokemon.getName() + " forgot how to \nuse " + replacedMove + "."));
                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                             {
                                 yield return null;
                             }
                             Dialog.drawDialogBox(2);
-                            yield return Dialog.StartCoroutine("drawText", "And...");
+                            yield return Dialog.StartCoroutine(Dialog.drawText( "And..."));
                             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                             {
                                 yield return null;
@@ -2746,7 +2746,7 @@ public class BagHandler : MonoBehaviour
                     {
                         //NOT ELSE because this may need to run after (chosenIndex == 1) runs
                         Dialog.drawDialogBox(2);
-                        yield return Dialog.StartCoroutine("drawText", "Give up on learning the move \n" + move + "?");
+                        yield return Dialog.StartCoroutine(Dialog.drawText( "Give up on learning the move \n" + move + "?"));
                         Dialog.drawChoiceBox(14);
                         yield return StartCoroutine(Dialog.choiceNavigate());
                         chosenIndex = Dialog.chosenIndex;
@@ -2782,8 +2782,7 @@ public class BagHandler : MonoBehaviour
             //NOT ELSE because this may need to run after (chosenIndex == 1) runs
             //cancel learning loop
             Dialog.drawDialogBox(2);
-            yield return Dialog.StartCoroutine("drawText", selectedPokemon.getName() + " did not learn \n" + move + ".")
-                ;
+            yield return Dialog.StartCoroutine(Dialog.drawText(selectedPokemon.getName() + " did not learn \n" + move + "."));
             while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
             {
                 yield return null;

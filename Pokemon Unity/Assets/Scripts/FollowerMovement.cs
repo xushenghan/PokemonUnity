@@ -48,19 +48,19 @@ public class FollowerMovement : MonoBehaviour
         Dialog = GameObject.Find("GUI").GetComponent<DialogBoxHandler>();
         Player = PlayerMovement.player;
 
-        pawn = transform.FindChild("Pawn");
-        pawnLight = transform.FindChild("PawnLight");
-        pawnReflection = transform.FindChild("PawnReflection");
-        pawnLightReflection = transform.FindChild("PawnLightReflection");
+        pawn = transform.Find("Pawn");
+        pawnLight = transform.Find("PawnLight");
+        pawnReflection = transform.Find("PawnReflection");
+        pawnLightReflection = transform.Find("PawnLightReflection");
 
-        hitBox = transform.FindChild("Follower_Transparent");
+        hitBox = transform.Find("Follower_Transparent");
 
         sRenderer = pawn.GetComponent<SpriteRenderer>();
         sLRenderer = pawnLight.GetComponent<SpriteRenderer>();
         sReflectionRenderer = pawnReflection.GetComponent<SpriteRenderer>();
         sLReflectionRenderer = pawnLightReflection.GetComponent<SpriteRenderer>();
 
-        pawnShadow = transform.FindChild("PawnShadow").GetComponent<SpriteRenderer>();
+        pawnShadow = transform.Find("PawnShadow").GetComponent<SpriteRenderer>();
 
         followerLight = GetComponentInChildren<Light>();
     }
@@ -80,8 +80,6 @@ public class FollowerMovement : MonoBehaviour
             followerLight.intensity = 0;
         }
 
-        transform.position = Player.transform.position;
-        direction = Player.direction;
         if (direction == 0)
         {
             transform.Translate(Vector3.back);
@@ -98,7 +96,7 @@ public class FollowerMovement : MonoBehaviour
         {
             transform.Translate(Vector3.right);
         }
-
+        transform.position = startPosition;
         changeFollower(followerIndex);
         StartCoroutine("animateSprite");
     }
@@ -292,9 +290,9 @@ public class FollowerMovement : MonoBehaviour
 
                 Dialog.drawDialogBox();
                 yield return
-                    Dialog.StartCoroutine("drawText",
+                    Dialog.StartCoroutine(Dialog.drawText(
                         SaveData.currentSave.PC.boxes[0][followerIndex].getName() +
-                        " is enjoying walking around \\out of their ball.");
+                        " is enjoying walking around \\out of their ball."));
                 while (!Input.GetButtonDown("Select") && !Input.GetButtonDown("Back"))
                 {
                     yield return null;
